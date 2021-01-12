@@ -1,0 +1,1198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Menu</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+</head>
+<style>
+#mycontainer {
+	max-width: 1300px !important;
+}
+
+#modal3table {
+	width: 80%;
+}
+</style>
+<body background="imagenes/fondo4.jpg">
+	<div class="container" id="mycontainer">
+		<div class="card text-center">
+			<div class="card-header">
+				<header class="blog-header py-4">
+					<div
+						class="row flex-nowrap justify-content-between align-items-center">
+						<div class="col-4 pt-1">
+							#foreach($datos in $xuser)
+							<h6>
+								NOMBRE: <span class="glyphicon glyphicon-user">${datos.nombre}
+									${datos.ap} ${datos.am} 
+							</h6>
+							<h6>
+								ROl DE USUARIO: <span class="glyphicon glyphicon-ok">${datos.cargo}
+
+
+
+
+
+
+
+
+
+
+
+
+								
+							</h6>
+							<input type="text" id="fecha" disabled="disabled"
+								onchange="mostrarFecha();" size="12"
+								style="background: rgb(4357ad);"> #end
+						</div>
+						<div class="col-4 text-center">
+							<h2>
+								<p class="text-danger font-italic font-weight-bolder">TIENDA
+									LA CIGUEÑA</p>
+							</h2>
+						</div>
+						<div class="col-3 d-flex justify-content-end align-items-center">
+							<a href="Index.html"><span class="glyphicon glyphicon-off">Desconectar</a>
+						</div>
+					</div>
+				</header>
+			</div>
+
+			<nav class="navbar navbar-expand-md  navbar-light"
+				style="background-color: #e3f2fd;">
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					#foreach($menus in $xlistaMenu)
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="http://example.com"
+							id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> ${menus.nombre} </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								#foreach($sub in $xlistaSubmen) #if(${menus.codm}==${sub.codm})
+
+								<li><a class="dropdown-item" data-href="${sub.enlace}"
+									onclick="pedir(this)" href="#">${sub.nombre}</a></li>#end #end
+
+
+							</ul></li> #end
+					</ul>
+				</div>
+			</nav>
+
+
+
+
+
+
+			<div class="card-body" id=contenedor>
+
+				<div class="container" id="idcuerpo"></div>
+
+			</div>
+
+
+
+			<div class="card-footer text-muted">
+				<div class="col-xs-12 col-md-12 ">
+					<h6 class="text-muted lead">Sistema web la cigueña:</h6>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- The Modal 1-->
+	<div class="modal" id="myModal1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">REGISTRO DE PRODUCTOS CON PROMOCIÓN</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" id="contmodal1">
+					<form id="idcuerpomodal1"></form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						onclick="guardarRegistroConPromocion()">ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal 2-->
+	<div class="modal" id="myModal2">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">REGISTRO DE PRODUCTOS SIN PROMOCIÓN</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" id="contmodal2">
+					<form id="idcuerpomodal2"></form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						onclick="guardarRegistroSinPromocion()">ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- The Modal 3-->
+	<div class="modal" id="myModal3">
+		<div class="modal-dialog modal-lg" id="modal3table">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">LISTA DE REAVASTECIMIENTO</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form id="formProductos">
+						<div id="contmodal3"></div>
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						onclick="whatsapp()">ENVIAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- The Modal 4-->
+	<div class="modal" id="myModal4">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">MODIFICAR CANTIDAD DE PRODUCTOS SIN
+						PROMOCIÓN</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" id="contmodal4">
+					<form id="idcuerpomodal4"></form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						onclick="valoresModificar()">ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal 5-->
+	<div class="modal" id="myModal5">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">REPORTES</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" id="contmodal5">
+					<form id="idcuerpomodal5"></form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						onclick="ReportePedidos()">ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal 6 vendedor-->
+	<div class="modal" id="myModal6">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title" >
+						<div id="cambiador_modal6">
+							<div id="h4_modal6">
+								 FORMULARIO DE VENTAS
+							</div>
+						</div>
+					 </h4>				
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form id="formventas">
+						<div id="contmodal6"></div>
+					</form>	
+				</div>
+				
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" 
+						onclick="vender()">ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- The Modal 7-->
+	<div class="modal" id="myModal7">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">DETALLES DEL PEDIDO</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" id="contmodal7">
+					<form id="idcuerpomodal7"></form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">					
+					<button type="button" class="btn btn-primary" data-dismiss="modal">RETROCEDER..</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+
+</body>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+function EntregadarPedido(id){
+	  $.ajax({
+			url:'PedidoAcumuladoEstado2.html',
+			type: "POST",
+			data : {
+				xid : id,
+			},
+			success : function(resp){
+				if (resp == '1') {				
+					$.ajax({
+						url : 'xListarPedidosAcumulados.html',
+						success : function(resp) {
+							$("#idcuerpo").remove();
+							$('#contenedor').html(resp);
+						}
+					});
+
+				} else {
+					alert("Ocurrio un Error");
+					location.href = "Menu.html";
+				}
+				}
+		})
+}
+function pendiente(id,comprador,direc,telf,gps,total){
+	var cordenadas = gps;
+	var partes = cordenadas.split(",");	
+	var result='MOVIL NEX !! \n';	
+		result += 'Id =' + id + '\n';
+		result += 'Nombre =' + comprador + '\n';
+		result += 'Direccion =' + direc + '\n';
+		result += 'Telefono =' + telf + '\n';
+		result += 'GPS = "https://www.google.com/maps/@'+partes[0]+','+partes[1]+' "\n\n';
+		result += 'Monto total =' + total + 'BS.\n\n';
+	console.log(result);
+	
+	 var number = "+59170213651";	    
+	    var url = "whatsapp://send?text="+encodeURIComponent(result)+"&phone="+encodeURIComponent(number);
+	   window.open(url);
+	   $.ajax({
+			url:'PedidoAcumuladoEstado.html',
+			type: "POST",
+			data : {
+				xid : id,
+			},
+			success : function(resp){
+				if (resp == '1') {				
+					$.ajax({
+						url : 'xListarPedidosAcumulados.html',
+						success : function(resp) {
+							$("#idcuerpo").remove();
+							$('#contenedor').html(resp);
+						}
+					});
+
+				} else {
+					alert("Ocurrio un Error");
+					location.href = "Menu.html";
+				}
+				}
+		})
+	
+}
+function VisualizarPedidos(id){
+	$.ajax({
+		url:'verdetalles.html',
+		type: "POST",
+		data : {
+			xid : id,
+		},
+		success : function(resp){
+			$("#idcuerpomodal7").remove();
+			$('#contmodal7').html(resp);
+			}
+	})
+}
+function transformar(a) {
+		console.log('id es',a);   		
+   var x = document.getElementById(a);
+   x.value = x.value.toUpperCase();
+}
+
+function vender(){
+	var comprador=$('#NombreDelComprador').val();
+	console.log(comprador);
+	var canti=$('#venta1').val();
+	console.log(canti);
+	var total=$('#vtotal').val();
+	console.log(total);	
+	var id_ticket=$('#id_ticket').val();
+	console.log(id_ticket);
+	$('#textid_ticket').val(id_ticket);	
+	if(comprador!='' && canti!=''){		
+		$.ajax({
+				url:'TodosEstadov1.html',
+				success : function(resp){
+					console.log(resp);
+				}
+			})
+			var ventas=$('#formventas').serialize();
+			console.log(ventas);
+			$.ajax({
+				type : "POST",
+				url : "Ventas.html",
+				data :ventas,
+				success : function(resp){							
+					if (resp == 'exito') {			
+						$('#myModal6').modal('hide');
+						window.open('Ticket_Venta.html?id_ticket='+id_ticket+'','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=825,height=550,directories=no,location=no');
+					} else {
+						alert("Ocurrio un Error");
+						location.href = "Menu.html";
+					}			
+				}
+			})	
+	}else{
+		 document.getElementById("venta1").focus();
+		 document.getElementById("NombreDelComprador").focus();
+	}
+	
+	
+}
+//estado estadov 1
+function CambioEstado1(id) {
+	var idproducto = id;
+	console.log(idproducto);
+	$.ajax({
+		url : "Estado1.html",
+		data : {
+			dato : idproducto,			
+		},
+		success : function(resp) {
+			if (resp == '1') {				
+				$.ajax({
+					url : 'FormularioDeVentas.html',
+					success : function(resp) {
+						$("#idcuerpomodal6").remove();
+						$('#contmodal6').html(resp);
+					}
+				});
+
+			} else {
+				alert("Ocurrio un Error");
+				location.href = "Menu.html";
+			}
+		
+			
+		}
+	})
+}
+
+//metodo de multiplicacion
+function mv(n) {
+	var x = document.getElementById("venta"+n).value;
+	var y = document.getElementById("preciov"+n).value;
+	var s = x * y;
+	
+	
+	 $("#vsubtotal"+n).attr("value",s);
+	 $("#ventasubtotal"+n).attr("value",s);
+	// document.getElementById("vsubtotal"+n).value = s;
+	}
+//metodo de suma
+function sumandov(a){
+	console.log("este es:",a);
+	var c=1,dato=a,suma=0;
+	for(c=1; c<=dato; c++){
+		suma=suma+ parseFloat(document.getElementById("vsubtotal"+c).value);		
+		console.log(suma);	
+	}
+	console.log(suma);
+	document.getElementById("vtotal").value = suma;
+	$("#ventatotal").attr("value",suma);
+	var datos=$("#ventatotal").val();
+	var num=NumeroALetras(datos);
+    console.log("la entrada de la venta en texto es",num);
+    document.getElementById("texttotal").value = num;
+	
+	
+}
+
+//estado de lista de abstecimiento
+function AgregarVenta(id) {
+	var idproducto = id;
+	console.log(idproducto);
+	$.ajax({
+		url : "Estado3.html",
+		data : {
+			dato : idproducto,			
+		},
+		success : function(resp) {
+			if (resp == '1') {				
+				$.ajax({
+					url : 'FormularioDeVentas.html',
+					success : function(resp) {
+						$("#idcuerpomodal6").remove();
+						$('#contmodal6').html(resp);
+					}
+				});
+
+			} else {
+				alert("Ocurrio un Error");
+				location.href = "Menu.html";
+			}
+		
+			
+		}
+	})
+}
+
+//super buscador
+var BuscaObjeto={
+			buscar:function(input){
+				var entrada=$(input).val();
+				var x = document.getElementById('superBuscador');
+				x.value = x.value.toUpperCase();
+				console.log('entrada: ',entrada);
+				if(entrada==""){
+					$('#id_busquedaCambiador').remove();
+				}else{
+					$.ajax({
+						url:"buscar.html",
+						data:{
+							buscador:entrada,
+						},
+						success:function(respuesta){
+							$('#id_busquedaCambiador').remove();
+							$('#id_busqueda').html(respuesta);
+							
+						}
+					})
+				}
+			
+			}	
+		}
+		
+//metodo de reportes de pedidos por fecha
+function ReportePedidos(){
+	var fecha = document.getElementById("fecha_Reporte").value;
+	if(fecha!=""){
+		console.log(fecha);
+		window.open('ReportesDePedidos.html?fecha='+fecha+'','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=825,height=550,directories=no,location=no');
+	}else{
+		alert("Ingrese la fecha");
+	}
+}
+//metodo enviar por whatsapp
+function whatsapp(){	
+var filas = [];
+	var tot=0;
+    $('#example3 tbody tr').each(function() {
+      var codigo = $(this).find('input[type="hidden"]').eq(0).val();
+      var categoria = $(this).find('input[type="hidden"]').eq(1).val();
+      var nombre = $(this).find('input[type="hidden"]').eq(2).val();
+      var tamano = $(this).find('input[type="hidden"]').eq(3).val();
+      var pedido = $(this).find('input[type="number"]').val();     
+   
+      var fila = {
+        codigo,
+        categoria,
+        nombre,
+        tamano,
+        pedido		
+      };
+      filas.push(fila);
+	 // var des = JSON.stringify(fila);
+	  //alert(des);
+    });
+	var desa =JSON.stringify(filas);
+	var ejemplo = JSON.parse(desa);
+	var result='LISTA DE PEDIDO!! \n';
+	$.each(ejemplo, function (i, item ){
+		result += 'Id =' + item.codigo + '\n';
+		result += 'Categoria =' + item.categoria + '\n';
+		result += 'Nombre =' + item.nombre + '\n';
+		result += 'Tamano =' + item.tamano + '\n';
+		result += 'Pedido =' + item.pedido + '\n\n';
+	});
+	console.log(result);
+    var number = "+59160274648";
+    
+    var url = "whatsapp://send?text="+encodeURIComponent(result)+"&phone="+encodeURIComponent(number);
+
+   window.open(url);
+   // alert(desa);
+   //almacenando los datos con formulario 
+	var datos = $('#formProductos').serialize();
+    $.ajax({
+    	type: "POST",
+		url : 'DATOS_PRODUCTOS.html',
+		data : datos,		
+		success : function(resp) {
+			if (resp == 'Agregado Exitosamente') {
+				alert("SE GUARDO EL REGUISTRO..");
+				$.ajax({
+					url : 'VerReavastecimiento.html',
+					success : function(resp) {
+						$("#idcuerpo").remove();
+						$('#contenedor').html(resp);
+					}
+				});
+
+			} else {
+				alert("Ocurrio un Error");
+				location.href = "Menu.html";
+			}
+		}
+				});
+
+}
+
+
+//metodo para filtrar numeros al escribir 
+	function filtroEntrada(event) {
+		var chCode = event.which || event.keyCode;
+		//retorna FALSE si se pulsa teclas numericas
+		var dato=(chCode <= 48 /* '0' */|| chCode <= 57 /* '9' */);
+		return dato;
+		m(n);
+		
+		
+	}
+	//metodo de multiplicacion
+	function m(n) {
+		x = document.getElementById("pedido"+n).value;
+		//console.log(sum);
+		//console.log(x);
+		y = document.getElementById("preciou"+n).value;
+		//console.log(y);
+		s = x * y;
+		//console.log(s);
+		document.getElementById("subtotal"+n).value = s;	
+	
+	}
+	//metodo de suma
+	function sumando(a){
+		var c=1,dato=a,suma=0;
+		for(c=1; c<=dato; c++){
+			suma=suma+ parseFloat(document.getElementById("subtotal"+c).value);
+			console.log(c);	
+		}
+		console.log(suma);
+		document.getElementById("total").value = suma;
+		
+		
+	}
+		//document.getElementById("total").value = str;	
+		//y = document.getElementById("total"+n).value;
+		
+		////modificando daots
+		function valoresModificar(){
+			var codigop = document.getElementById("mod4codigop").value;
+			console.log(codigop);
+			var cantidad = document.getElementById("mod4cantidad").value;
+			console.log(cantidad);
+			var preciou = document.getElementById("mod4preciounitario").value;
+			console.log(preciou);
+			if (codigop != '' && cantidad != '' && preciou != '') {
+			var mensaje = confirm('ESTA SEGURO DE MODIFICACION?');
+			if (mensaje) {
+				$.ajax({
+					url : 'modificarDatos.html',
+					data : {
+						xcodigop : codigop,						
+						xcantidad : cantidad,
+						xpreciou : preciou,						
+					},
+					success : function(resp) {
+						if (resp == 'Se Guardo Exitosamente') {
+							alert("SE GUARDO EL REGUISTRO..");
+							$.ajax({
+								url : 'VerReavastecimiento.html',
+								success : function(resp) {
+									$("#idcuerpo").remove();
+									$('#contenedor').html(resp);
+								}
+							});
+
+						} else {
+							alert("Ocurrio un Error");
+							location.href = "Menu.html";
+						}
+					}
+				})
+
+			} else {
+				alert("Ocurrio un Error");
+				location.href = "Menu.html";
+			}
+		} else {
+			alert("LLene los datos");
+		}
+			////
+		}
+		
+////TRAENDO VISTA modificar
+	function modificarC(codigo) {
+	var xxcodigop = codigo;
+	//alert(xxcodigop);	
+	$.ajax({
+			url : 'modalModificar.html',
+			data : {
+				xcodigop : xxcodigop,					
+				},
+			success : function(resp) {
+				$("#idcuerpomodal4").remove();
+				$('#contmodal4').html(resp);
+			}
+		});
+	}
+	
+	////TRAENDO VISTA DE LA LISTA DE REAVASTECIMIENTO MODAL3
+	function VerListaModal() {
+		$.ajax({
+			url : 'verlista.html',
+			success : function(resp) {
+				$("#idcuerpomodal3").remove();
+				$('#contmodal3').html(resp);
+			}
+		});
+	}
+
+	//estado de lista de abstecimiento
+	function Agregarlista(codigop) {
+		var xxcodigop = codigop;
+		$.ajax({
+			url : "EnvioRegistro.html",
+			data : {
+				xcodigop : xxcodigop,			
+			},
+			success : function(resp) {
+				if (resp == 'Agregado Exitosamente') {
+					alert("SE AGREGO EL REGUISTRO..");
+					$.ajax({
+						url : 'VerReavastecimiento.html',
+						success : function(resp) {
+							$("#idcuerpo").remove();
+							$('#contenedor').html(resp);
+						}
+					});
+
+				} else {
+					alert("Ocurrio un Error");
+					location.href = "Menu.html";
+				}
+			}
+		})
+	}
+
+	function guardarRegistroSinPromocion() {
+		var codigop = document.getElementById("xxcodigop").value;
+		console.log(codigop);
+		var categoria = document.getElementById("xxcategoria").value;
+		console.log(categoria);
+		var nombre = document.getElementById("xxnombre").value;
+		console.log(nombre);
+		var tamaño = document.getElementById("xxtamaño").value;
+		console.log(tamaño);
+		var cantidad = document.getElementById("xxcantidad").value;
+		console.log(cantidad);
+		var preciou = document.getElementById("xxpreciounitario").value;
+		console.log(preciou);
+		var preciot = document.getElementById("xxpreciototal").value;
+		console.log(preciot);
+		var fecha = document.getElementById("xxfecha").value;
+		console.log(fecha);
+		var foto = document.getElementById("xxfile").value;
+		console.log(foto);
+		if (codigop != '' && categoria != '' && nombre != '' && tamaño != ''
+				&& cantidad != '') {
+			var mensaje = confirm('ESTA SEGURO DE GUARDAR');
+			if (mensaje) {
+				$.ajax({
+					url : 'GuardadoDeProductosSinPromocion.html',
+					data : {
+						xcodigop : codigop,
+						xcategoria : categoria,
+						xnombre : nombre,
+						xtamaño : tamaño,
+						xcantidad : cantidad,
+						xpreciou : preciou,
+						xpreciot : preciot,
+						xfecha : fecha,
+						xfoto : foto,
+					},
+					success : function(resp) {
+						if (resp == 'Se Guardo Exitosamente') {
+							alert("SE GUARDO EL REGUISTRO..");
+							$.ajax({
+								url : 'RegistroSinPromocion.html',
+								success : function(resp) {
+									$("#idcuerpo").remove();
+									$('#contenedor').html(resp);
+								}
+							});
+
+						} else {
+							alert("Ocurrio un Error");
+							location.href = "Menu.html";
+						}
+					}
+				})
+
+			} else {
+				alert("Ocurrio un Error");
+				location.href = "Menu.html";
+			}
+		} else {
+			alert("LLene los datos");
+		}
+	}
+
+	function NewRegistroSinPromocion() {
+		$.ajax({
+			url : 'xNewRegistroSinPromocion.html',
+			success : function(resp) {
+				$("#idcuerpomodal2").remove();
+				$('#contmodal2').html(resp);
+			}
+		});
+	}
+
+	function guardarRegistroConPromocion() {
+		var codigopu = document.getElementById("xcodigopu").value;
+		console.log(codigopu);
+		var categoria = document.getElementById("xcategoria").value;
+		console.log(categoria);
+		var nombre = document.getElementById("xnombre").value;
+		console.log(nombre);
+		var tamaño = document.getElementById("xtamaño").value;
+		console.log(tamaño);
+		var cantidad = document.getElementById("xcantidad").value;
+		console.log(cantidad);
+		var preciou = document.getElementById("xpreciounitario").value;
+		console.log(preciou);
+		var preciot = document.getElementById("xpreciototal").value;
+		console.log(preciot);
+		var fecha = document.getElementById("xfecha").value;
+		console.log(fecha);
+		var tipo = document.getElementById("xtipo").value;
+		console.log(tipo);
+		var foto = document.getElementById("xfile").value;
+		console.log(foto);
+		if (codigopu != '' && categoria != '' && nombre != '' && tamaño != ''
+				&& cantidad != '') {
+			var mensaje = confirm('ESTA SEGURO DE GUARDAR');
+			if (mensaje) {
+				$.ajax({
+					url : 'GuardadoDeProductosConPromocion.html',
+					data : {
+						xcodigopu : codigopu,
+						xcategoria : categoria,
+						xnombre : nombre,
+						xtamaño : tamaño,
+						xcantidad : cantidad,
+						xpreciou : preciou,
+						xpreciot : preciot,
+						xfecha : fecha,
+						xtipo : tipo,
+						xfoto : foto,
+					},
+					success : function(resp) {
+						if (resp == 'Se Guardo Exitosamente') {
+							alert("SE GUARDO EL REGUISTRO..");
+							$.ajax({
+								url : 'RegistroConPromocion.html',
+								success : function(resp) {
+									$("#idcuerpo").remove();
+									$('#contenedor').html(resp);
+								}
+							});
+
+						} else {
+							alert("Ocurrio un Error");
+							location.href = "Menu.html";
+						}
+					}
+				})
+
+			} else {
+				alert("Ocurrio un Error");
+				location.href = "Menu.html";
+			}
+		} else {
+			alert("LLene los datos");
+
+		}
+
+	}
+
+	function NewRegistroConPromocion() {
+		$.ajax({
+			url : 'xNewRegistroConPromocion.html',
+			success : function(resp) {
+				$("#idcuerpomodal1").remove();
+				$('#contmodal1').html(resp);
+			}
+		});
+	}
+	$(document).ready(function mostrarFecha() {
+
+		var dt = new Date();
+		var mes = new Array()
+		mes[1] = 'Enero';
+		mes[2] = 'Febrero';
+		mes[3] = 'Marzo';
+		mes[4] = 'Abril';
+		mes[5] = 'Mayo';
+		mes[6] = 'Junio';
+		mes[7] = 'Julio';
+		mes[8] = 'Agosto';
+		mes[9] = 'Septiembre';
+		mes[10] = 'Octubre';
+		mes[11] = 'Nobiembre';
+		mes[12] = 'Diciembre';
+		var n = mes[dt.getMonth() + 1];
+		var day = dt.getDate();
+		var year = dt.getFullYear();
+
+		var fecha = day + "/" + n + "/" + year;
+		$("#fecha").val(fecha);
+
+	});
+
+	function pedir(a) {
+		var enlace = $(a).data('href');
+		console.log('enlace :', enlace);
+		if (enlace == 'RegistroConPromocion.html') {
+			$.ajax({
+				url : 'RegistroConPromocion.html',
+				success : function(resp) {
+					$("#idcuerpo").remove();
+					$('#contenedor').html(resp);
+				}
+			});
+		} else {
+			if (enlace == 'RegistroSinPromocion.html') {
+				$.ajax({
+					url : 'RegistroSinPromocion.html',
+					success : function(resp) {
+						$("#idcuerpo").remove();
+						$('#contenedor').html(resp);
+					}
+				});
+			} else {
+				if (enlace == 'VerReabastecimiento.html') {
+					$.ajax({
+						url : 'VerReavastecimiento.html',
+						success : function(resp) {
+							$("#idcuerpo").remove();
+							$('#contenedor').html(resp);
+						}
+					});
+				} else {
+					if (enlace == 'PedidoDeReavastecimiento.html') {						
+						$('#myModal5').modal(); 					
+						$.ajax({
+							url : 'PedidoDeReavastecimiento.html',
+							success : function(resp) {
+								$("#idcuerpomodal5").remove();
+								$('#contmodal5').html(resp);
+							}
+						});
+					} else {
+						if (enlace == 'FormularioDeVentas.html') {
+							$('#myModal6').modal(); 	
+							$.ajax({
+								url : 'NumAletorio.html',
+								success : function(resp) {
+									$("#h4_modal6").remove();
+									$('#cambiador_modal6').html(resp);
+								}
+							});
+							
+											
+							$.ajax({
+								url : 'FormularioDeVentas.html',
+								success : function(resp) {
+									$("#idcuerpomodal6").remove();
+									$('#contmodal6').html(resp);
+								}
+							});
+						} else {
+							if (enlace == 'ListarPedidosAcumulados.html') {						
+								$.ajax({
+									url : 'xListarPedidosAcumulados.html',
+									success : function(resp) {
+										$("#idcuerpo").remove();
+										$('#contenedor').html(resp);
+									}
+								});
+							} else {
+								alert(enlace);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	function Unidades(num){
+		 
+		  switch(num)
+		  {
+		    case 1: return "UN";
+		    case 2: return "DOS";
+		    case 3: return "TRES";
+		    case 4: return "CUATRO";
+		    case 5: return "CINCO";
+		    case 6: return "SEIS";
+		    case 7: return "SIETE";
+		    case 8: return "OCHO";
+		    case 9: return "NUEVE";
+		  }
+		 
+		  return "";
+		}
+		 
+		function Decenas(num){
+		 
+		  decena = Math.floor(num/10);
+		  unidad = num - (decena * 10);
+		 
+		  switch(decena)
+		  {
+		    case 1:
+		      switch(unidad)
+		      {
+		        case 0: return "DIEZ";
+		        case 1: return "ONCE";
+		        case 2: return "DOCE";
+		        case 3: return "TRECE";
+		        case 4: return "CATORCE";
+		        case 5: return "QUINCE";
+		        default: return "DIECI" + Unidades(unidad);
+		      }
+		    case 2:
+		      switch(unidad)
+		      {
+		        case 0: return "VEINTE";
+		        default: return "VEINTI" + Unidades(unidad);
+		      }
+		    case 3: return DecenasY("TREINTA", unidad);
+		    case 4: return DecenasY("CUARENTA", unidad);
+		    case 5: return DecenasY("CINCUENTA", unidad);
+		    case 6: return DecenasY("SESENTA", unidad);
+		    case 7: return DecenasY("SETENTA", unidad);
+		    case 8: return DecenasY("OCHENTA", unidad);
+		    case 9: return DecenasY("NOVENTA", unidad);
+		    case 0: return Unidades(unidad);
+		  }
+		}//Unidades()
+		 
+		function DecenasY(strSin, numUnidades){
+		  if (numUnidades > 0)
+		    return strSin + " Y " + Unidades(numUnidades)
+		 
+		  return strSin;
+		}//DecenasY()
+		 
+		function Centenas(num){
+		 
+		  centenas = Math.floor(num / 100);
+		  decenas = num - (centenas * 100);
+		 
+		  switch(centenas)
+		  {
+		    case 1:
+		      if (decenas > 0)
+		        return "CIENTO " + Decenas(decenas);
+		      return "CIEN";
+		    case 2: return "DOSCIENTOS " + Decenas(decenas);
+		    case 3: return "TRESCIENTOS " + Decenas(decenas);
+		    case 4: return "CUATROCIENTOS " + Decenas(decenas);
+		    case 5: return "QUINIENTOS " + Decenas(decenas);
+		    case 6: return "SEISCIENTOS " + Decenas(decenas);
+		    case 7: return "SETECIENTOS " + Decenas(decenas);
+		    case 8: return "OCHOCIENTOS " + Decenas(decenas);
+		    case 9: return "NOVECIENTOS " + Decenas(decenas);
+		  }
+		 
+		  return Decenas(decenas);
+		}//Centenas()
+		 
+		function Seccion(num, divisor, strSingular, strPlural){
+		  cientos = Math.floor(num / divisor)
+		  resto = num - (cientos * divisor)
+		 
+		  letras = "";
+		 
+		  if (cientos > 0)
+		    if (cientos > 1)
+		      letras = Centenas(cientos) + " " + strPlural;
+		    else
+		      letras = strSingular;
+		 
+		  if (resto > 0)
+		    letras += "";
+		 
+		  return letras;
+		}//Seccion()
+		 
+		function Miles(num){
+		  divisor = 1000;
+		  cientos = Math.floor(num / divisor)
+		  resto = num - (cientos * divisor)
+		 
+		  strMiles = Seccion(num, divisor, "MIL", "MIL");
+		  strCentenas = Centenas(resto);
+		 
+		  if(strMiles == "")
+		    return strCentenas;
+		 
+		  return strMiles + " " + strCentenas;
+		 
+		  //return Seccion(num, divisor, "UN MIL", "MIL") + " " + Centenas(resto);
+		}//Miles()
+		 
+		function Millones(num){
+		  divisor = 1000000;
+		  cientos = Math.floor(num / divisor)
+		  resto = num - (cientos * divisor)
+		 
+		  strMillones = Seccion(num, divisor, "UN MILLON", "MILLONES");
+		  strMiles = Miles(resto);
+		 
+		  if(strMillones == "")
+		    return strMiles;
+		 
+		  return strMillones + " " + strMiles;
+		 
+		  //return Seccion(num, divisor, "UN MILLON", "MILLONES") + " " + Miles(resto);
+		}//Millones()
+		 
+		function NumeroALetras(num,centavos){
+		  var data = {
+		    numero: num,
+		    enteros: Math.floor(num),
+		    centavos: (((Math.round(num * 100)) - (Math.floor(num) * 100))),
+		    letrasCentavos: "",
+		  };
+		  if(centavos == undefined || centavos==false) {
+		    data.letrasMonedaPlural="BOLIVIANOS";
+		    data.letrasMonedaSingular="BOLIVIANOS";
+		  }else{
+		    data.letrasMonedaPlural="CENTAVOS";
+		    data.letrasMonedaSingular="CENTAVOS";
+		  }
+		 
+		  if (data.centavos > 0)
+		    data.letrasCentavos = "CON " + NumeroALetras(data.centavos,true);
+		 
+		  if(data.enteros == 0)
+		    return "CERO " + data.letrasMonedaPlural + " " + data.letrasCentavos;
+		  if (data.enteros == 1)
+		    return Millones(data.enteros) + " " + data.letrasMonedaSingular + " " + data.letrasCentavos;
+		  else
+		    return Millones(data.enteros) + " " + data.letrasMonedaPlural + " " + data.letrasCentavos;
+		}//NumeroALetras()
+	 
+</script>
+</html>

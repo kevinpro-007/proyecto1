@@ -1,0 +1,61 @@
+<div class="table-responsive" id="idcuerpo">
+	<table id="example" class="table table-striped table-bordered"
+		style="width: 100%">	
+
+		<thead>
+		<tr>
+				<th COLSPAN=8>
+					<h2>
+						<a href="Menu.html"><span
+							class="glyphicon glyphicon-arrow-left"> </span></a> ESTADO DE
+						PRODUCTOS CON PROMOCIÓN
+					</h2>
+				</th>
+				<th COLSPAN=2>
+					<button type="button" class="btn btn-danger" data-toggle="modal"
+						data-target="#myModal1">
+						<span class="glyphicon glyphicon-new-window"
+							onclick="NewRegistroConPromocion();"> nuevo</span>
+					</button>
+				</th>
+			</tr>
+			<tr>
+				<th>CODIGOPU</th>
+				<th>CATEGORIA</th>
+				<th>NOMBRE</th>
+				<th>TAMAÑO</th>
+				<th>CANTIDAD</th>
+				<th>PRECIO UNITARIO</th>
+				<th>PRECIO TOTAL</th>
+				<th>FECHA</th>
+				<th>TIPO DE PROMOCION</th>
+				<th>FOTO</th>
+			</tr>
+		</thead>
+		<tbody>
+			#foreach($xl in $xlista)
+			<tr>
+				<td>${xl.codigopu}</td>
+				<td>${xl.categoria}</td>
+				<td>${xl.nombre}</td>
+				<td>${xl.tamano}</td>
+				<td>${xl.cantidad}</td>
+				<td>${xl.preciou}</td>
+				<td>${xl.preciot}</td>
+				<td>${xl.fecha}</td>
+				<td>${xl.tipodep}</td>
+				<td>
+				<img alt="ERROR" src="imagenes/productos/${xl.foto}"style="width:60px;"height="55px">
+				</td>
+			</tr>#end
+		</tbody>
+
+		
+	
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});
+</script>

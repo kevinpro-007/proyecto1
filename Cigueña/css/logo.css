@@ -1,0 +1,21 @@
+
+body{
+	background-color: rgb(227,255,224);
+	font-family: arial;
+	font-variant: normal;
+	color: orange;
+}
+#general{
+	height: 500px;
+	width: 500px;
+	background-color: rgb(500,544,241);
+	margin:auto;
+	margin-top:100px;
+	border-radius: 30px;
+}
+#imagen{
+	text-align: center;
+	width:500px;
+	border-radius: 15px;
+
+}

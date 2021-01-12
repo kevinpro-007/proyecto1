@@ -1,0 +1,35 @@
+<table id=id_busquedaCambiador class="table table-sm table-bordered"
+	style="width: 100%">
+
+	<tbody>
+		#foreach($xl in $xlista)
+		<tr>
+			<td>${xl.id_producto} <input type="hidden" class="form-control"
+				name="codigos[]" value="${xl.id_producto}">
+			</td>
+			<td>${xl.categoria} <input type="hidden" class="form-control"
+				name="categoria[]" value="${xl.categoria}">
+			</td>
+			<td>${xl.nombre} <input type="hidden" class="form-control"
+				name="nombre[]" value="${xl.nombre}">
+			</td>
+			<td>${xl.tamano} <input type="hidden" class="form-control"
+				name="tamano[]" value="${xl.tamano}">
+			</td>
+			<td>${xl.cantidad}</td>
+			<td><input type="text" class="form-control" size="3"
+				disabled="disabled" id="preciou$icono" value="${xl.preciou} Bs"></td>
+			<td style="width: 10%">#if(${xl.estadov}==1)
+				<button type="button" class="btn btn-success">
+					<span class="glyphicon glyphicon-new-window"
+						onclick='AgregarVenta("${xl.id_producto}");'>Agregar</span>
+				</button> #else
+				<button type="button" class="btn btn-danger">
+					<span class="glyphicon glyphicon-new-window"
+						>agregado</span>
+				</button> #end
+
+			</td>
+		</tr>
+		#end
+</table>

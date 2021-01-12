@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>La Cigueña</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+	
+</head>
+<style>
+#imagentransparente {
+	background: url(imagenes/cigueñaContactos2.jpg);
+	padding: 30px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border-radius: 15px;
+	height: 130px;
+}
+
+#div1, #div2, #div3, #div4, img {
+	text-align: center;
+	border-radius: 20px;
+}
+</style>
+<body background="imagenes/fondo4.jpg">
+	<div class="container">
+		<div class="col-md-12" id="imagentransparente">
+
+
+
+		</div>
+
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">		
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">				
+				<ul class="navbar-nav">			
+			
+				 <li class="nav-item">
+				   		<a class="nav-link" href="Index.html" >MENU PRINCIPAL</a>
+	              </li>
+	               <li class="nav-item">
+			   		<a class="nav-link" href="#" onclick="catalogoSinPromocion();">CATALOGO DE PRODUCTOS SIN PROMOCION</a>
+           			</li>
+           			<li class="nav-item">
+			   		<a class="nav-link" href="#" onclick="2();">CATALOGO DE PRODUCTOS CON PROMOCION</a>
+           			</li>
+           			<li class="nav-item">
+			   		<a class="nav-link" href="#" onclick="2();">TUTORIALES</a>
+           			</li>
+				   <li class="nav-item">
+				   		<a class="nav-link" href="#" onclick="CrearUsur();">CREAR CUENTA</a>
+	              </li>
+	              <li class="nav-item">
+	              		<a class="nav-link" href="#"> 
+	              			<img src="imagenes/Captura.PNG" style="height: 20px; width: 100px;">
+	         	 		</a>
+	         	   </li>
+			   <li><a class="text-muted" href="#" aria-label="Search"> <svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="none" stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+                viewBox="0 0 24 24" focusable="false">
+                <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
+                <path d="M21 21l-5.2-5.2" /></svg>
+          </a></li>
+				</ul>
+			</div>
+			
+		</nav>
+
+		<br>
+			 <div class="alert alert-danger" hidden="hidden" id="mensaje">
+   				 <strong>Informacion !</strong> <a href="#" class="alert-link">Cree Una Cuenta Cigueña..</a>.
+  			</div> 
+
+<div class="container" align="center" id="GeneralPrincipal">
+	<div class="container" align="center" id="EspecificoPrincipal">
+		<div class="container" align="center" id="2">
+			<div class="row">
+				<div class="col-3"></div>
+				<div class="col-6">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel"
+						align="center" id="div2">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+							<li data-target="#myCarousel" data-slide-to="3"></li>
+						</ol>
+
+						<!-- The slideshow -->
+						<div class="carousel-inner" align="center" id="div3">
+							<div class="carousel-item active" align="center" id="div4">
+								<img src="imagenes/Presentacion1.jpg" alt="prest1" width="500"
+									height="300">
+							</div>
+							<div class="carousel-item">
+								<img src="imagenes/Presentacion2.jpg" alt="prest2" width="500"
+									height="300">
+							</div>
+							<div class="carousel-item">
+								<img src="imagenes/Presentacion3.jpg" alt="prest3" width="500"
+									height="300">
+							</div>
+							<div class="carousel-item">
+								<img src="imagenes/Presentacion4.jpg" alt="prest4" width="500"
+									height="300">
+							</div>
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="carousel-control-prev" href="#"> <span
+							class="carousel-control-prev-icon"></span>
+						</a> <a class="carousel-control-next" href="#"> <span
+							class="carousel-control-next-icon"></span>
+						</a>
+					</div>
+				</div>
+				<div class="col-3"></div>
+			</div>
+		</div>
+	</div>
+	<main role="main" class="container">
+	<div class="row">
+		<div class="col-md-8 blog-main">				
+			<div class="p-4">
+				<h4 class="font-italic">Visite nuestras redes sociales:</h4>
+				<ol class="list-unstyled">
+					<li><a href="#">Twitter</a></li>
+					<li><a href="#">Facebook</a></li>
+					<li><a class="btn btn-large btn-primary right" href="/userHome">Entra</a></li>
+				</ol>
+			</div>
+		</div>
+		<!-- /.blog-main -->
+
+		<aside class="col-md-4 blog-sidebar">
+			<div class="shadow-lg p-3 mb-5 text-secondary rounded">				
+				<form class="form-signin" action="Verifica.html">
+          			<h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> login</h1>       
+          			  	<input type="text" name="xuser" class="form-control" placeholder="Usuario.." required="" autofocus="">
+            
+            			<input type="password" name="xpass" class="form-control" placeholder="Contraseña.." required="">
+           			 <br>
+           			    <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> INGRESAR</button>
+           
+          		</form>
+			</div>
+		</aside>
+		<!-- /.blog-sidebar -->
+
+	</div>
+	<!-- /.row --> </main>
+	<!-- /.container -->
+		
+	</div>
+
+
+	<!-- The Modal 8-->
+	<div class="modal" id="myModal9">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">CREAR CUENTA CIGUEÑA</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form id="idcuerpomodal9">
+						<div id="contmodal9"></div>
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" id="btnaceptar" class="btn btn-primary"  onclick="CrearUsuarioSistema();"
+						>ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+		
+
+	<footer class="blog-footer font-italic" style="text-align: center;">
+		<p>
+			SISTEMA WEB LA CIGUEÑA
+			<br>
+			TARIJA  -  BOLIVIA
+		</p>
+		
+	</footer>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	function mensajeAlerta(){	
+		$("#mensaje").removeAttr("hidden")
+		setTimeout(function(){$("#mensaje").attr("hidden",'hidden')},2000);
+		
+		
+		
+	}
+	function catalogoSinPromocion(){
+		$.ajax({
+			url : 'CatalogoSinPromocionPUBLICO.html',
+			success : function(resp) {
+				$("#EspecificoPrincipal").remove();
+				$('#GeneralPrincipal').html(resp);
+			}
+		});
+	}
+	function CrearUsuarioSistema(){
+		
+		var text1=$("#r_codp").val();
+		var text2=$("#r_nombre").val();
+		var text3=$("#r_ap").val();
+		var text4=$("#r_am").val();
+		var text5=$("#r_fecha").val();
+		var text6=$("#r_direccion").val();
+		var text7=$("#r_telefono").val();
+		var text8=$("#r_usuario").val();
+		var text9=$("#r_contraseña1").val();
+		var text10=$("#r_contraseña2").val();
+		if(text1==""){$("#r_codp").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+		else{
+			if(text2==""){$("#r_nombre").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+			else{
+				if(text3==""){$("#r_ap").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+				else{
+					if(text4==""){$("#r_am").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+					else{
+						if(text5==""){$("#r_fecha").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+						else{
+							if(text6==""){$("#r_direccion").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+							else{
+								if(text7==""){$("#r_telefono").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+								else{
+									if(text8==""){$("#r_usuario").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+									else{
+										if(text9==""){$("#r_contraseña1").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+										else{
+											if(text10==""){$("#r_contraseña2").focus();$("#btnaceptar").removeAttr("data-dismiss"); }
+											else{$("#btnaceptar").attr('data-dismiss','modal'); }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		var datos=$("#idcuerpomodal9").serialize();
+	console.log(datos);	
+	$.ajax({
+		type : "POST",
+		url : 'DatosNewRegistro.html',
+		data : datos,
+		success : function(resp) {
+			alert("Usuario Registrados");
+		}
+	});	
+		
+		
+	}
+	
+	
+	var Contraseña2={
+			buscar:function(input){
+				var entrada=$(input).val();
+				//var x = document.getElementById('r_usuario');
+				//x.value = x.value.toUpperCase();
+				//console.log('entrada: ',entrada);
+				var contraseña1=$("#r_contraseña1").val();
+				var contraseña2=$("#r_contraseña2").val();
+				if(contraseña1=="" && contraseña2==""){
+					$("#danger").attr("hidden",'hidden');
+					$("#success").attr("hidden",'hidden');
+					$("#btnaceptar").removeAttr("data-dismiss"); 
+				}else{
+					if(contraseña1==entrada){
+						$("#success").removeAttr("hidden");
+						$("#danger").attr("hidden",'hidden');
+						$("#btnaceptar").attr('data-dismiss','modal');
+					}else{
+						$("#success").attr("hidden",'hidden');
+						$("#danger").removeAttr("hidden");
+						$("#btnaceptar").removeAttr("data-dismiss"); 
+					}
+				}
+				
+					
+			}	
+		}
+	
+
+	
+	//ci de crear usuario
+	var BusquedaUsuarioCi={
+				buscar:function(input){
+					var entrada=$(input).val();
+					//var x = document.getElementById('r_usuario');
+					//x.value = x.value.toUpperCase();
+					//console.log('entrada: ',entrada);
+					var n = 30;
+					$('#ci_barra').empty();
+					if(entrada!=""){
+						$('#ci_barra').attr('style', 'width:30%;height:20px');
+						$('#ci_barra').append(n+'%');						
+						if(entrada.length>=3){
+							$('#ci_barra').empty();
+							$('#ci_barra').attr('style', 'width:65%;height:20px');
+							$('#ci_barra').append(2*n+'%');			
+						}if(entrada.length>=6){
+							$('#ci_barra').empty();
+							$('#ci_barra').attr('style', 'width:100%;height:20px');
+							$('#ci_barra').append(3*n+10+'%');		
+						}
+						$('#ci_barra').append('');
+					}else{
+						$('#ci_barra').attr('style', 'width:0%;height:20px');
+						$('#ci_barra').empty();
+						$("#ci_mal").attr("hidden",'hidden');
+						$("#ci_bien").attr("hidden",'hidden');
+					}
+					
+					console.log(entrada);
+						$.ajax({
+							url:"buscarUsuarioCop.html",
+							data:{
+								buscador:entrada,
+							},
+							success:function(respuesta){
+								console.log(respuesta);
+								if(respuesta=='0'){								
+										$("#ci_mal").attr("hidden",'hidden');								
+										$("#ci_bien").removeAttr("hidden");																
+								}else{							
+										$("#ci_mal").removeAttr("hidden");
+										$("#ci_bien").attr("hidden",'hidden');								
+								}							
+							}
+						})					
+				}	
+			}
+	//metodo para filtrar numeros al escribir 
+	function filtroEntrada(event) {
+		var chCode = event.which || event.keyCode;
+		//retorna FALSE si se pulsa teclas numericas
+		var dato=(chCode <= 48 /* '0' */|| chCode <= 57 /* '9' */);
+		return dato;
+		m(n);
+		
+		
+	}
+	//super buscador
+	var BusquedaUsuario={
+				buscar:function(input){
+					var entrada=$(input).val();
+					//var x = document.getElementById('r_usuario');
+					//x.value = x.value.toUpperCase();
+					//console.log('entrada: ',entrada);
+					var n = 30;
+					$('#barra').empty();
+					var chCode = entrada.which || entrada.keyCode;
+					if(entrada!=""){
+						$('#barra').attr('style', 'width:30%;height:20px');
+						$('#barra').append(n+'%');						
+						if(entrada.length>=4){
+							$('#barra').empty();
+							$('#barra').attr('style', 'width:65%;height:20px');
+							$('#barra').append(2*n+'%');			
+						}if(entrada.length>=10){
+							$('#barra').empty();
+							$('#barra').attr('style', 'width:100%;height:20px');
+							$('#barra').append(3*n+10+'%');		
+						}
+						$('#barra').append('');
+					}else{
+						$('#barra').attr('style', 'width:0%;height:20px');
+						$('#barra').empty();
+						$("#mal").attr("hidden",'hidden');
+						$("#bien").attr("hidden",'hidden');
+					}
+					
+					console.log(entrada);
+						$.ajax({
+							url:"buscarUsuario.html",
+							data:{
+								buscador:entrada,
+							},
+							success:function(respuesta){
+								console.log(respuesta);
+								if(respuesta=='0'){
+									$("#bien").removeAttr("hidden");
+									$("#mal").attr("hidden",'hidden');
+								}else{
+									$("#bien").attr("hidden",'hidden');
+									$("#mal").removeAttr("hidden");
+								}
+								/*$('#id_busquedaCambiador').remove();
+								$('#id_busqueda').html(respuesta);
+								*/
+							}
+						})
+					
+					
+				}	
+			}
+			
+	function CrearUsur(){
+		$('#myModal9').modal();
+		$.ajax({
+			url : 'RegistroUsuario.html',
+			success : function(resp) {
+				$("#contmodal9").remove();
+				$('#idcuerpomodal9').html(resp);
+			}
+		});
+	 
+	}
+	
+	function agregarCarrito(a){
+		console.log(a);
+		$.ajax({
+			url : 'Cambio_Estado_Carrito.html',
+			data:{
+				dato:a,
+			},
+			success : function(resp) {
+				if(resp=='Cambio'){
+					$.ajax({
+						url : 'CatalogoSinPromocion.html',
+						success : function(resp) {
+							$("#EspecificoPrincipal").remove();
+							$('#GeneralPrincipal').html(resp);
+						}
+					});
+				}else{
+					alert("Ocurrio un problema en el servidor");
+				}
+			}
+		});
+	}
+/*	function pedircodm(a) {
+		var enlace = $(a).data('href');
+		console.log('enlace :', enlace);
+		if (enlace == 'codm-5') {
+			$.ajax({
+				url : 'Carusel.html',
+				success : function(resp) {
+					$("#EspecificoPrincipal").remove();
+					$('#GeneralPrincipal').html(resp);
+				}
+			});
+		} else{
+			if (enlace == 'codm-6') {
+				$.ajax({
+					url : 'CatalogoSinPromocion.html',
+					success : function(resp) {
+						$("#EspecificoPrincipal").remove();
+						$('#GeneralPrincipal').html(resp);
+					}
+				});
+			} else{
+				if (enlace == 'codm-8') {
+					$.ajax({
+						url : 'Carrito_De_Compras.html',
+						success : function(resp) {
+							$("#EspecificoPrincipal").remove();
+							$('#GeneralPrincipal').html(resp);
+						}
+					});
+				} else{
+					alert(enlace);
+				}
+			}
+		}
+		
+	}
+	*/
+
+		$(document).ready(function() {
+			// Activate Carousel
+			$("#myCarousel").carousel();
+			// Enable Carousel Controls
+			$(".carousel-control-prev").click(function() {
+				$("#myCarousel").carousel("prev");
+			});
+			$(".carousel-control-next").click(function() {
+				$("#myCarousel").carousel("next");
+			});
+		});
+		$(document).ready(function cargarFecha() {
+			//fecha actualcon script
+			var now = new Date();
+			var dia = ("0" + now.getDate()).slice(-2);
+			var mes = ("0" + (now.getMonth() + 1)).slice(-2);
+			var formato = now.getFullYear() + "-" + (mes) + "-" + (dia);
+			$("#fecha").val(formato);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="container" align="center" id="GeneralPrincipal">
+	<div class="container" align="center" id="EspecificoPrincipal">				
+		<div class="row mb-5">
+	
+		#foreach($pl in $xlistaP)
+	      <div class="col-md-3">
+	        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+	          <div class="col p-3 d-flex flex-column position-static">
+	         
+				<button type="button" class="btn btn-success" disabled="disabled" >
+					<span class="glyphicon glyphicon-new-window"
+							onclick="mensajeAlerta();"	>Cree cuenta Cigueña</span>
+				</button> 							
+			
+					
+				
+				 	
+	            <p class="card-text mb-auto">CATEGORIA: ${pl.categoria} </p>
+	            <p class="card-text mb-auto">NOMBRE: ${pl.nombre} </p>
+	            <p class="card-text mb-auto">TAMAÑO: ${pl.tamano} </p>
+	            <p class="card-text mb-auto">PRECIO: ${pl.precio}BS </p>
+	          </div>
+	          
+	          <div class="container">
+  				<img src="imagenes/productos/${pl.foto}" alt="Interior del Coche" class="img-fluid" style="width: 150px; height: 150px;"> 
+			  </div>
+	         
+	          
+	        </div>
+	      </div>
+	 
+	      	 
+	      	#end    
+    	</div>
+	</div>
+</div>

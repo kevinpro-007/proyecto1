@@ -1,0 +1,60 @@
+<div class="container" align="center" id="GeneralPrincipal">
+	<div class="container" align="center" id="EspecificoPrincipal">				
+		<div class="row mb-5">
+		#foreach($pl in $xlistaP)
+	      <div class="col-md-3">
+	        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+	          <div class="col p-3 d-flex flex-column position-static">
+	          #set($icono="")
+								#foreach($user in $xplista)						
+											
+										#if(${user.id_catalogosp}==${pl.id_catalogosp})	
+											#set($icono="1")
+										#end
+									
+	
+								#end		
+	          
+		          #if(${icono}!=1)
+		          <button type="button" class="btn btn-success">
+							<span class="glyphicon glyphicon-new-window"
+								onclick="agregarCarrito('${pl.id_catalogosp}')">Agregar al carrito</span>
+					</button> 									
+					#else
+						<button type="button" class="btn btn-danger">
+							<span class="glyphicon glyphicon-new-window"
+								>Agregado a su carrito</span>
+						</button> 							
+					#end     
+					
+				
+				 	
+	            <p class="card-text mb-auto">CATEGORIA: ${pl.categoria} </p>
+	            <p class="card-text mb-auto">NOMBRE: ${pl.nombre} </p>
+	            <p class="card-text mb-auto">TAMAÑO: ${pl.tamano} </p>
+	            <p class="card-text mb-auto">PRECIO: ${pl.precio}BS </p>
+	          </div>
+	          
+	          <div class="container">
+  				<img src="imagenes/productos/${pl.foto}" alt="Interior del Coche" class="img-fluid" style="width: 150px; height: 150px;"> 
+			  </div>
+	         
+	          
+	        </div>
+	      </div>
+	      <form id="${pl.id_catalogosp}">
+	      	<input type="hidden" name="id_catalogo_sp" value="${pl.id_catalogosp}">	      	
+	      	<input type="hidden" name="id_codp_sp" class="codp_sp" >
+	      	<input type="hidden" name="categoria_sp" value="${pl.categoria}">
+	      	<input type="hidden" name="nombre_sp" value="${pl.nombre}">
+	      	<input type="hidden" name="tamano_sp" value="${pl.tamano}">
+	      	<input type="hidden" name="foto_sp" value="${pl.foto}">
+	      	<input type="hidden" name="descripcion_sp" value="${pl.descripcion}">
+	  		<input type="hidden" name="precio_sp" value="${pl.precio}">
+	      	
+	      </form>
+	      	 
+	      	#end    
+    	</div>
+	</div>
+</div>

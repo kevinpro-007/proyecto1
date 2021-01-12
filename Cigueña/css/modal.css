@@ -1,0 +1,46 @@
+
+.form{
+	margin-top:80px;
+	width: 40%;
+	height: auto;
+	padding: 8px;
+	background-color:#fff;
+	color: #666;
+	margin: auto;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+table{
+	width:25%;
+	margin: auto;
+}
+table tr td{
+	text-align: center;
+	size: 10px;
+	padding: 5px;
+	text-align: center;
+}
+input{
+	size: auto;
+	border-radius: 1em;
+	text-decoration:none;
+	
+	text-align: center;
+}
+a {
+	text-decoration: none;
+	text-align: center;
+	border-radius: 3px;
+	margin: auto;
+	padding: auto;	
+}
+.prueba{
+	background: rgba(0,0,0,0.1);
+	width:99px;
+	height: 28px;
+}
+.prueba:hover{
+	background: rgba(0,0,0,0.2);
+	width: 98px;
+	height: 30px;
+}

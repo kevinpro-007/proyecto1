@@ -1,0 +1,71 @@
+.pagination {
+	margin: 20px 0px;
+}
+
+.pagination ul {
+	list-style: none;
+	text-align: center;
+}
+
+.pagination ul li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.pagination ul li a {
+	padding: 10px 20px;
+	color: #FFF;
+	background: #024959;
+	text-decoration: none;
+}
+
+.pagination ul li a:hover {
+	background: #037e8c;
+}
+
+.pagination ul li .active {
+	background: #037e8c;
+	font-weight: bold; # header1 { background : #4357ad;
+	position: fixed;
+	width: 100%;
+	top: 0px;
+}
+
+
+#FechaYfinalizar a {
+	text-decoration: none;
+	color: #fff;
+	margin-left: 10px;
+}
+.dropdown-menu {
+    position: relative;
+}
+.nav-link {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+#subpro:hover {
+    display: block;
+    color: #FFF;
+}
+
+#subpro a{
+	color: red;
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}

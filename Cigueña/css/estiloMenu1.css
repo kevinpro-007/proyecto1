@@ -1,0 +1,15 @@
+#mycontainer {
+    max-width: 1280px !important;
+}
+#imagentransparente {
+	background: url(imagenes/cigueñaContactos2.jpg);
+	padding: 30px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border-radius: 15px;
+}
+
+#div1, #div2, #div3, #div4, img {
+	text-align: center;
+	border-radius: 20px;
+}

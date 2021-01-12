@@ -1,0 +1,109 @@
+
+<div class="table-responsive" id="idcuerpomodal6">
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">BUSCADOR</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" id="superBuscador"
+				onkeyup="BuscaObjeto.buscar(this)">
+		</div>
+		
+	</div>
+	
+	<div id="id_busqueda">
+		<div id="id_busquedaCambiador"></div>
+	</div>
+	<table id="example6" class="table table-sm table-hover table-bordered"
+		style="width: 10%">
+		<thead class="thead-dark">
+			<tr>
+				<th>ID</th>
+				<th>CATEGORIA</th>
+				<th>NOMBRE</th>
+				<th>TAMAÑO</th>
+				<th>P/U</th>
+				<th>VENTA</th>
+				<th>SUB-TOTAL</th>
+				<th>BORRAR</th>
+
+			</tr>
+		</thead>
+		<tbody>
+
+			#set($icono=1) #foreach($xl in $xlista)
+
+			<tr>
+				<td>${xl.id_producto} <input type="hidden" class="form-control"
+					name="vcodigos[]" value="${xl.id_producto}">
+
+				</td>
+				<td>${xl.categoria} <input type="hidden" class="form-control"
+					name="vcategoria[]" value="${xl.categoria}">
+				</td>
+				<td>${xl.nombre} <input type="hidden" class="form-control"
+					name="vnombre[]" value="${xl.nombre}">
+				</td>
+				<td>${xl.tamano} <input type="hidden" class="form-control"
+					name="vtamano[]" value="${xl.tamano}">
+				</td>
+
+				<td>${xl.preciou} <input type="hidden" class="form-control"
+					size="2" name="vpreciou[]" id="preciov$icono" value="${xl.preciou}"></td>
+				#foreach($xxl in $xxlista)
+				<td><input type="number" class="form-control" name="venta[]"
+					size="2" onkeypress="return filtroEntrada(event)"
+					onkeyup="mv($icono);" id="venta$icono"
+					onblur="sumandov(${xxl.count})" required="required"></td> #end
+				<td><input type="text" name="vsubtotal[]" class="form-control"
+					size="4" disabled="disabled" id="vsubtotal$icono" value="">
+					<input type="hidden" name="ventasubtotal[]" class="form-control"
+					size="4" id="ventasubtotal$icono" value=""></td>
+				<td>
+					<button type="button" class="btn btn-danger">
+						<span class="glyphicon glyphicon-new-window"
+							onclick="CambioEstado1('${xl.id_producto}');">Borrar</span>
+					</button>
+				</td>
+
+
+			</tr>
+			#set($icono=$icono+1) #end
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="6" style="text-align: right">MONTO TOTAL DE LA
+					VENTA (BS):</th>
+				<th colspan="2">
+					<input type="text" class="form-control"
+						size="8" disabled="disabled" id="vtotal" name="vtotal"> <input
+						type="hidden" id="ventatotal" name="ventatotal">
+					<input type="hidden" id="texttotal" name="VentaTotalEnTexto">
+					<input type="hidden" id=textid_ticket name="ticket">
+				</th>
+				</th>
+
+			</tr>
+		</tfoot>
+
+
+	</table>
+	<div class="col-sm-12" align="center">
+		<label class="col-sm-4 col-form-label">
+			<p class="text-danger 	font-weight-bold ">RECIBO DE VENTA</p>
+		</label>
+	</div>
+	
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">Nombre:</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" id="NombreDelComprador" name="nombre_comprador" placeholder="Nombre del comprador" required="required"
+				onkeyup="transformar('NombreDelComprador');">
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example6').DataTable();		
+	});
+</script>

@@ -1,0 +1,104 @@
+<div id="contmodal9">
+	<div class="container-fluid">
+		<div class="form-group row">
+
+			<div class="col">
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">CI:</label>
+					<svg hidden="hidden" id="ci_bien" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  							<path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+						</svg>
+						
+						<svg hidden="hidden" id="ci_mal" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  							<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					<div class="col-sm-8">
+						<input type="Number"  filtroEntrada(event) class="form-control" id="r_codp" name="r_codp" placeholder="Cedula de identidad.." required="" autofocus="" onkeyup="BusquedaUsuarioCi.buscar(this)">
+							<div class="progress">
+						  		<div class="progress-bar" id="ci_barra"></div>
+							</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">NOMBRE</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="r_nombre" name="r_nombre" placeholder="Ingrese su nombre.." required="" autofocus="">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">APELLIDO PATERNO</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="r_ap" name="r_ap" placeholder="Ingrese su apellido paterno.." required="" autofocus="">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">APELLIDO MATERNO</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="r_am" name="r_am" placeholder="Ingrese su apellido materno.." required="" autofocus="">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">FECHA NACIMIENTO</label>
+					<div class="col-sm-7">
+						<input type="Date" class="form-control" id="r_fecha" name="r_fecha">
+					</div>
+				</div>	
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">DIRECCION</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="r_direccion" name="r_direccion" placeholder="Ingrese su direccion.." required="" autofocus="">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">TELEFONO</label>
+					<div class="col-sm-9">
+						<input type="Number" class="form-control" id="r_telefono" name="r_telefono" placeholder="Ingrese su telefono.." required="" autofocus="">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col">				
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">USUARIO</label>
+					 	<svg hidden="hidden" id="bien" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  							<path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+						</svg>
+						
+						<svg hidden="hidden" id="mal" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  							<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="r_usuario" name="r_usuario" placeholder="Letras/Numeros" required="" autofocus="" onkeyup="BusquedaUsuario.buscar(this)">
+							<div class="progress">
+						  		<div class="progress-bar" id="barra"></div>
+							</div>
+					</div>
+					
+				</div>				
+				<div class="form-group row">
+					<label class="col-sm-4 col-form-label">CONTRASEÑA</label>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="r_contraseña1" name="r_contraseña1" placeholder="Cree su contraseña.." required="" autofocus="" >
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-4 col-form-label">REPITA SU CONTRASEÑA</label>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="r_contraseña2" name="r_contraseña2" placeholder="Repita su contraseña.." required="" autofocus="" onkeyup="Contraseña2.buscar(this)">
+					</div>
+				</div>
+				  <div class="alert alert-success" hidden="hidden" id="success">
+    					<strong>Success!</strong> Accion correcta puede continuar!!.
+  				  </div>
+  				  <div class="alert alert-danger" hidden="hidden" id="danger">
+    				<strong>Danger!</strong> Las contraseñas No Coinciden!!.
+ 				  </div>
+			</div>
+
+
+		</div>
+	</div>
+	</div>

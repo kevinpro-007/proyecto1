@@ -1,0 +1,109 @@
+<div class="container" align="center" id="GeneralPrincipal">
+	<form id="formCarrito">
+	<table id="example7" class="table table-sm table-hover table-bordered"style="width: 10%">
+				<thead class="thead-dark">
+					<tr>
+						<th>FOTO</th>
+						<th>CATEGORIA</th>
+						<th>NOMBRE</th>
+						<th>TAMAÑO</th>
+						<th>PRECIO</th>
+						<th>CANTIDAD</th>												
+						<th>SUB-TOTAL</th>
+						<th>BORRAR</th>		
+					</tr>
+				</thead>
+				<tbody>
+		
+					#set($icono=1) #foreach($xl in $xlista)
+		
+					<tr>
+						<td align="center">
+							<img alt="ERROR" src="imagenes/productos/${xl.foto}"style="width:60px;"height="55px";>
+							<input type="hidden" class="form-control"
+							name="c_id_carrito[]" value="${xl.id_carrito}">
+						</td>
+						<td>${xl.categoria} 
+							<input type="hidden" class="form-control"
+							name="c_categoria[]" value="${xl.categoria}">
+						</td>
+						<td>${xl.nombre} 
+							<input type="hidden" class="form-control"
+							name="c_nombre[]" value="${xl.nombre}">
+						</td>
+						<td>${xl.tamano} 
+							<input type="hidden" class="form-control"
+							name="c_tamano[]" value="${xl.tamano}">
+						</td>
+		
+						<td>${xl.precio}
+							 <input type="hidden" class="form-control"
+							size="2" name="c_preciou[]" id="c_preciov$icono" value="${xl.precio}">
+							</td>
+						
+						
+						#foreach($xxl in $xxlista)
+							<td>
+								<input type="number" class="form-control" name="c_venta[]"
+								size="2" onkeypress="return filtroEntrada(event)"
+								onkeyup="c_mv($icono);" id="c_venta$icono"
+								onblur="c_sumandov(${xxl.count})" required >
+							</td>
+					    #end
+						<td><input type="text" name="c_vsubtotal[]" class="form-control"
+							size="4"  id="c_vsubtotal$icono" value="" disabled="disabled">
+							<input type="hidden" name="c_ventasubtotal[]" class="form-control"
+							size="4" id="c_ventasubtotal$icono" value=""></td>
+						
+						
+						
+						<td>						
+							<button type="button" class="btn btn-danger">
+								<span class="glyphicon glyphicon-new-window"
+									onclick="estado1_actualiza_Carrito('${xl.id_catalogosp}',${xl.id_carrito},${xl.id_codp});">Borrar</span>
+							</button>
+						</td>
+		
+		
+					</tr>
+					#set($icono=$icono+1) #end
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>
+						<input type="hidden" class="form-control"
+								size="8" disabled="disabled" id="carrito_vtotal" name="carrito_vtotal" > 
+							 <button type="button" class="btn btn-success">
+								<span class="glyphicon glyphicon-new-window"
+									onclick="HacerPedido();">Hacer Pedido</span>
+							 </button>  
+						</th>
+						<th>
+							<button type="button" class="btn btn-warning">
+								<span class="glyphicon glyphicon-new-window"
+								>Pagar con Paypal</span>
+							</button>
+						</th>
+						<th colspan="4" style="text-align: right">MONTO TOTAL DE LA
+							VENTA (BS):</th>
+						<th colspan="2">
+							<input type="text" class="form-control"
+								size="8" disabled="disabled" id="x" name="x">
+						</th>
+					 
+		
+					</tr>
+				</tfoot>
+		
+		
+			</table>	
+	
+	</form>	
+		
+	</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example7').DataTable();		
+	});
+</script>

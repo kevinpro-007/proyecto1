@@ -1,0 +1,33 @@
+
+<div class="table-responsive" id="idcuerpomodal7">
+	<table id="example7" class="table table-sm table-hover table-bordered"
+		style="width: 100%">
+		<thead class="thead-dark">
+			<tr>
+				<th>ID</th>
+				<th >DETALLES</th>
+				<th width="20%">TOTAL (Bs)</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			#foreach($xl in $detalle)
+			<tr>
+				<td>${xl.id_pedidos}</td>
+				<td>${xl.detalles}</td>
+				<td>${xl.total}</td>
+			</tr>
+			#end
+		</tbody>
+		<tfoot>
+
+		</tfoot>
+	</table>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example7').DataTable();
+	});
+</script>

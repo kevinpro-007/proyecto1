@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>La Cigueña</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+</head>
+<style> 
+#imagentransparente {
+	background: url(imagenes/cigueñaContactos2.jpg);
+	padding: 30px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border-radius: 15px;
+	height: 130px;
+}
+
+#div1, #div2, #div3, #div4, img {
+	text-align: center;
+	border-radius: 20px;
+}
+</style>
+<body background="imagenes/fondo4.jpg">
+	<div class="container">
+		<div class="col-md-12" id="imagentransparente"></div>
+
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					#foreach($sl in $xslista)
+					<li class="nav-item"><a class="nav-link"
+						data-href="codm-${sl.codm}" onclick="pedircodm(this)">${sl.nombre}
+					</a></li> #end
+				</ul>
+			</div>
+
+		</nav>
+		<div class="col-8 d-flex justify-content-end align-items-center">
+			<h6>
+				#foreach($datos in $xuser) NOMBRE: <span
+					class="glyphicon glyphicon-user">${datos.nombre} ${datos.ap}
+					${datos.am} <input type="hidden" id="id_codp_Cliente"
+					value="${datos.codp}">
+
+				</span> #end <a href="Index.html"><span class="glyphicon glyphicon-off">___:Desconectar</a>
+			</h6>
+
+		</div>
+		<br>
+
+		<div class="container" align="center" id="GeneralPrincipal">
+			<div class="container" align="center" id="EspecificoPrincipal">
+				<div class="container" align="center" id="2">
+					<div class="row">
+						<div class="col-3"></div>
+						<div class="col-6">
+							<div id="myCarousel" class="carousel slide" data-ride="carousel"
+								align="center" id="div2">
+								<!-- Indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+									<li data-target="#myCarousel" data-slide-to="2"></li>
+									<li data-target="#myCarousel" data-slide-to="3"></li>
+								</ol>
+
+								<!-- The slideshow -->
+								<div class="carousel-inner" align="center" id="div3">
+									<div class="carousel-item active" align="center" id="div4">
+										<img src="imagenes/Presentacion1.jpg" alt="prest1" width="500"
+											height="300">
+									</div>
+									<div class="carousel-item">
+										<img src="imagenes/Presentacion2.jpg" alt="prest2" width="500"
+											height="300">
+									</div>
+									<div class="carousel-item">
+										<img src="imagenes/Presentacion3.jpg" alt="prest3" width="500"
+											height="300">
+									</div>
+									<div class="carousel-item">
+										<img src="imagenes/Presentacion4.jpg" alt="prest4" width="500"
+											height="300">
+									</div>
+								</div>
+
+								<!-- Left and right controls -->
+								<a class="carousel-control-prev" href="#"> <span
+									class="carousel-control-prev-icon"></span>
+								</a> <a class="carousel-control-next" href="#"> <span
+									class="carousel-control-next-icon"></span>
+								</a>
+							</div>
+						</div>
+						<div class="col-3"></div>
+					</div>
+				</div>
+			</div>
+			<main role="main" class="container">
+			<div class="row">
+				<div class="col-md-8 blog-main">
+					<div class="p-4">
+						<h4 class="font-italic">Visite nuestras redes sociales:</h4>
+						<ol class="list-unstyled">
+							<li><a href="#">Twitter</a></li>
+							<li><a href="#">Facebook</a></li>
+						</ol>
+					</div>
+				</div>
+				<!-- /.blog-main -->
+
+				<aside class="col-md-4 blog-sidebar">
+					<div class="shadow-lg p-3 mb-5 text-secondary rounded"></div>
+				</aside>
+				<!-- /.blog-sidebar -->
+
+			</div>
+			<!-- /.row --> </main>
+			<!-- /.container -->
+
+		</div>
+	</div>
+
+<!-- The Modal 10-->
+	<div class="modal" id="myModal10">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">DATOS DE REFERENCIA DE ENTREGA</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form id="idcuerpomodal10">
+						<div id="contmodal10"></div>
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" id="e_aceptar" class="btn btn-primary"  onclick="DatosReferencia();"
+						>ACEPTAR</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="blog-footer font-italic" style="text-align: center;">
+		<p>
+			SISTEMA WEB LA CIGUEÑA <br> TARIJA - BOLIVIA
+		</p>
+
+	</footer>
+
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	<script
+		src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+	  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC4Pta07pYlzbICVniGLYta4MLCrUrXrHE&sensor=false&libraries=geometry&v=3.4"></script>
+	<script type="text/javascript">
+	function DatosReferencia(){
+		var text1=$("#e_nombre").val();
+		var text2=$("#e_direccion").val();
+		var text3=$("#e_telefono").val();
+		var text4=$("#e_gpss").val();
+		if(text1==""){$("#e_nombre").focus();$("#e_aceptar").removeAttr("data-dismiss"); }
+		else{
+			if(text2==""){$("#e_direccion").focus();$("#e_aceptar").removeAttr("data-dismiss"); }
+			else{
+				if(text3==""){$("#e_telefono").focus();$("#e_aceptar").removeAttr("data-dismiss"); }
+				else{
+					if(text4==""){$("#e_gpss").focus();$("#e_aceptar").removeAttr("data-dismiss"); }
+					else{$("#e_aceptar").attr('data-dismiss','modal'); }
+				}
+			}
+		}
+		var v=$("#x").val();
+		console.log(v);
+		
+		var datos=$("#idcuerpomodal10").serialize();
+		console.log(datos);
+		var Carrito=$("#formCarrito").serialize();
+		console.log(Carrito);
+		
+		
+		$.ajax({
+			type : "POST",
+			url : "DatosPedidos.html",
+			data : datos +'&'+Carrito+'&valor='+v,
+			success:function(resp){
+				if(resp=="exito") alert("PEDIDO ENVIADO..");
+				else alert("OCURRIO UN PROBLEMA!!")
+			}
+		});
+	}
+	
+	
+	
+	
+	
+	 var dragActive = true;
+     var mapa = null;
+     var marker = null;
+     var circle = null;
+     var watcher = null;
+     var lastPosition = null;
+     var currentPosition = null;
+
+       function cargar() {
+    	   
+         if (!$(this).hasClass('active')) {
+         //  $(this).addClass('active').empty().html('Detener');
+           if (navigator.geolocation) {
+             dragActive = false;
+             watcher = navigator.geolocation.watchPosition(function(position){              
+               var distance = 0;                 
+               currentPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
+                       
+   				marker.setPosition(currentPosition);
+
+               // Desactivar el seguimiento cuando se activa el drag
+               if (!dragActive) {
+                 mapa.setZoom(17);
+                 circle.setVisible(true);
+                 mapa.setCenter(currentPosition);
+               }
+             }, function(error){
+               circle.setVisible(false);
+             }, {
+               enableHighAccuracy:true, 
+               maximumAge: 0, 
+               timeout: 1000
+             });
+           }
+           else {
+             alert('Su dispositivo no permite la geolización');
+           }
+         }
+         else {
+        // $(this).removeClass('active').empty().html('Iniciar geolocalizacion');
+         if ((navigator.geolocation) && (watcher !== null)) {
+           navigator.geolocation.clearWatch(watcher);
+           circle.setVisible(false);
+           dragActive = true;
+         }
+         }
+       }
+  
+
+     function initialize() {
+       var mapOptions = {
+         center: new google.maps.LatLng(-21.532720, -64.734145),
+         zoom: 17,
+         disableDoubleClickZoom: false,
+         disableDefaultUI: true,
+         zoomControl: false,
+         mapTypeControl: false,
+         zoomControlOptions: {
+           style: google.maps.ZoomControlStyle.LARGE,
+           position: google.maps.ControlPosition.TOP_LEFT
+         },
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+       };
+
+       mapa = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+       marker = new google.maps.Marker({
+         title: 'Hello mundo :D',
+         map: mapa
+       });
+
+       circle = new google.maps.Circle({
+         map: mapa,
+         radius: 100,
+         strokeWeight: 0,
+         strokePosition: google.maps.StrokePosition.CENTER,
+         fillColor: '#137900'
+       });
+
+       circle.bindTo('center', marker, 'position');
+
+       // mapa.dragend
+       google.maps.event.addListener(mapa, 'dragend', function(){
+         var center = mapa.getCenter();
+         if (!dragActive) {
+           dragActive = true;
+           circle.setVisible(false);
+         }
+
+       });
+       var output = document.getElementById('map');
+	   function localizacion(posicion){
+			var latitude = posicion.coords.latitude;
+			var longitude = posicion.coords.longitude;
+			console.log(latitude);				
+			console.log(longitude);
+			var texto= latitude+','+longitude;
+			$("#e_gpss").attr("value",texto);
+			output.innerHTML = "<p id='e_gps' name='e_gps'>"+latitude+", "+longitude+"</p>";
+		}
+		function error(){
+			output.innerHTML = "<p>No se pudo obtener tu ubicación</p>";
+
+		}
+	   navigator.geolocation.getCurrentPosition(localizacion,error);
+     }
+	function findMe(){
+		var output = document.getElementById('map');
+		// Verificar si soporta geolocalizacion
+		if (navigator.geolocation) {
+			output.innerHTML = "<p>Tu navegador soporta Geolocalizacion</p>";
+		}else{
+			output.innerHTML = "<p>Tu navegador no soporta Geolocalizacion</p>";
+		}
+		//Obtenemos latitud y longitud
+		function localizacion(posicion){
+			var latitude = posicion.coords.latitude;
+			var longitude = posicion.coords.longitude;
+			console.log(latitude);				
+			console.log(longitude);
+			output.innerHTML = "<p id='gps'>"+latitude+", "+longitude+"</p>";
+		}
+		function error(){
+			output.innerHTML = "<p>No se pudo obtener tu ubicación</p>";
+		}
+		navigator.geolocation.getCurrentPosition(localizacion,error);
+		$("#BtnGps").removeClass();
+		$("#BtnGps").addClass('btn btn-success');
+		document.getElementById('BtnGps').innerHTML = '';
+		document.getElementById('BtnGps').innerHTML = 'Cordenadas Generadas';
+		
+	}
+	function HacerPedido(){
+		
+		var codp=$('#c_venta1').val();
+		if(codp == ''){
+			alert("RELLENE LA CANTIDAD DE PEDIDOS!!");	
+			$("#c_venta1").focus();
+		}else{
+			$("#myModal10").modal();
+			$.ajax({
+				url : 'DatosDeReferencia.html',
+				success : function(resp) {
+					$("#contmodal10").remove();
+					$('#idcuerpomodal10').html(resp);
+				}
+			});
+		}
+		
+	}
+	///funcion quecambia estado a 1 y actualiza  la tambla carrito
+	function estado1_actualiza_Carrito(id_catalogo,id_carrito,codp){
+		console.log(id_catalogo);
+		console.log(id_carrito);
+		console.log(codp);
+		$.ajax({
+			url : "EstadoYcarritoCompras.html",
+			data : {
+				xid_catalogo : id_catalogo,	
+				xid_carrito: id_carrito,
+				xcodp:codp,
+			},
+			success : function(resp) {
+				if (resp == 'Agregado') {				
+					var codp=$('#id_codp_Cliente').val();
+					console.log(codp);
+					$.ajax({
+						url : 'Carrito_De_Compras.html',
+						data:{
+							xcodp : codp,
+						},
+						success : function(resp) {								
+							$("#EspecificoPrincipal").remove();
+							$('#GeneralPrincipal').html(resp);								
+						}
+					
+					});
+
+				} else {
+					alert("Ocurrio un Error");
+					location.href = "Index.html";
+				}
+			
+				
+			}
+		})
+	}
+
+
+	//metodo para filtrar numeros al escribir 
+		function filtroEntrada(event) {
+			var chCode = event.which || event.keyCode;
+			//retorna FALSE si se pulsa teclas numericas
+			var dato=(chCode <= 48 /* '0' */|| chCode <= 57 /* '9' */);
+			return dato;
+			m(n);
+			
+			
+		}
+
+	//metodo de multiplicacion
+	function c_mv(n) {
+		var x = document.getElementById("c_venta"+n).value;
+		var y = document.getElementById("c_preciov"+n).value;
+		var s = x * y;
+		
+		
+		 $("#c_vsubtotal"+n).attr("value",s);
+		 $("#c_ventasubtotal"+n).attr("value",s);
+		// document.getElementById("vsubtotal"+n).value = s;
+		}
+	//metodo de suma
+	function c_sumandov(a){
+		console.log("este es:",a);
+		var c=1,dato=a,suma=0;
+		for(c=1; c<=dato; c++){
+			suma=suma+ parseFloat(document.getElementById("c_vsubtotal"+c).value);		
+			
+		}
+		console.log("suma total es:",suma);
+		document.getElementById("carrito_vtotal").value = suma;	
+		$("#carrito_vtotal").attr("value",suma);
+		document.getElementById("x").value = suma;	
+		$("#x").attr("value",suma);
+
+	}
+
+	
+		function agregarCarrito(a) {
+			var codp = $('#id_codp_Cliente').val();
+			$('.codp_sp').val(codp);
+			console.log(codp);
+			var datos = $('#' + a).serialize();
+			console.log(datos);
+			$.ajax({
+				type : 'POST',
+				url : 'Cambio_Estado_Carrito.html',
+				data : datos,
+				success : function(resp) {
+					alert(resp);
+					if (resp == 'Agregado') {
+						var codp=$('#id_codp_Cliente').val();
+						console.log(codp);
+						$.ajax({
+							url : 'CatalogoSinPromocion.html',
+							data:{
+								xcodp : codp,
+							},
+							success : function(resp) {
+								$("#EspecificoPrincipal").remove();
+								$('#GeneralPrincipal').html(resp);
+							}
+						});
+					} else {
+						alert("Ocurrio un problema en el servidor");
+					}
+				}
+			});
+		}
+		function pedircodm(a) {
+			var enlace = $(a).data('href');
+			console.log('enlace :', enlace);
+			if (enlace == 'codm-5') {
+				$.ajax({
+					url : 'Carusel.html',
+					success : function(resp) {
+						$("#EspecificoPrincipal").remove();
+						$('#GeneralPrincipal').html(resp);
+					}
+				});
+			} else {
+				if (enlace == 'codm-6') {
+					var codp=$('#id_codp_Cliente').val();
+					console.log(codp);
+					$.ajax({
+						url : 'CatalogoSinPromocion.html',
+						data:{
+							xcodp : codp,
+						},
+						success : function(resp) {
+							$("#EspecificoPrincipal").remove();
+							$('#GeneralPrincipal').html(resp);
+						}
+					});
+				} else {
+					if (enlace == 'codm-8') {
+						var codp=$('#id_codp_Cliente').val();
+						console.log(codp);
+						$.ajax({
+							url : 'Carrito_De_Compras.html',
+							data:{
+								xcodp : codp,
+							},
+							success : function(resp) {								
+								$("#EspecificoPrincipal").remove();
+								$('#GeneralPrincipal').html(resp);								
+							}
+						
+						});
+						//$('#example7').DataTable();		
+					} else {
+						alert(enlace);
+					}
+				}
+			}
+
+		}
+
+	</script>
+</body>
+</html>

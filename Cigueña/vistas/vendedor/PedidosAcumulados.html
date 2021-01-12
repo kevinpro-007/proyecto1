@@ -1,0 +1,88 @@
+
+
+<div class="table-responsive" id="idcuerpo">
+	<table id="example" class="table table-striped table-bordered"
+		style="width: 100%">
+
+		<thead>
+			<tr>
+				<th COLSPAN=6>
+					<h2>
+						<a href="Menu.html"><span
+							class="glyphicon glyphicon-arrow-left"> </span></a> LISTA DE
+						PEDIDOS ACUMULADOS
+					</h2>
+				</th>
+			
+			</tr>
+			<tr>
+			
+				<th>COMPRADOR</th>
+				<th>TELEFONO</th>
+				<th>DIRECCION</th>
+				<th>ESTADO</th>
+				<th>DETALLE</th>
+				<th>CONFIRMACION DE ENTREGA</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			#foreach($xl in $xlista)
+			<tr>
+				<td>${xl.comprador}</td>				
+				<td>${xl.telefono}</td>
+				<td>${xl.direccion}</td>
+				<td>
+					#if(${xl.estado}==0)
+		
+						<div class="alert alert-danger">
+						  <button type="button" class="bi bi-box-arrow-in-up-right" onclick='pendiente("${xl.id_pedidos}","${xl.comprador}", "${xl.direccion}","${xl.telefono}","${xl.ubicacion}","${xl.total}")'>&times;enviar</button>
+						  <strong>pendiente!!</strong>
+						</div>
+						#end
+					#if(${xl.estado}==1)
+						<div class="alert alert-success">
+						  <strong>enviado!!</strong>
+						</div>
+					#end
+					#if(${xl.estado}==2)
+						<div class="alert alert-success">
+						  <strong>Entregado!!</strong>
+						</div>
+					#end
+				</td>
+				
+				<td>
+					<button type="button" class="btn btn-success" data-toggle="modal"
+						data-target="#myModal7">
+						<span class="glyphicon glyphicon-new-window"
+							onclick='VisualizarPedidos("${xl.id_pedidos}");'>Ver</span>
+					</button> 
+				</td>
+				<td>#if(${xl.estado}==2)
+					<button type="button" class="btn btn-success">
+						<span class="glyphicon glyphicon-new-window"
+							onclick='alert("pedido Entregado")'>entregado</span>
+					</button> 
+					#else
+					<button type="button" class="btn btn-danger">
+						<span class="glyphicon glyphicon-new-window"
+							onclick='EntregadarPedido("${xl.id_pedidos}");'>Espera</span>
+					</button> 
+					#end
+
+				</td>
+			</tr>
+			#end
+		</tbody>
+
+
+
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});
+</script>
+

@@ -1,0 +1,71 @@
+
+<div class="table-responsive" id="idcuerpomodal2">
+	<table id="example3" class="table table-sm table-bordered"
+		style="width: 100%">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>CATEGORIA</th>
+				<th>NOMBRE</th>
+				<th>TAMAÑO</th>
+				<th>CANTIDAD</th>
+				<th>P/U</th>
+				<th>PEDIDO</th>
+				<th>SUB-TOTAL</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+				#set($icono=1)  #foreach($xl in $xlista)
+				
+				<tr>
+					<td>
+						${xl.id_producto}
+						<input type="hidden" class="form-control" name="codigos[]" value="${xl.id_producto}">
+					</td>
+					<td>
+						${xl.categoria}
+						<input type="hidden" class="form-control" name="categoria[]" value="${xl.categoria}">
+					</td>
+					<td>
+						${xl.nombre}
+						<input type="hidden" class="form-control" name="nombre[]" value="${xl.nombre}">
+					</td>
+					<td>
+						${xl.tamano}
+						<input type="hidden" class="form-control" name="tamano[]" value="${xl.tamano}">
+					</td>
+					<td>${xl.cantidad}</td>				
+					<td><input type="text" class="form-control" size="4"
+						disabled="disabled" id="preciou$icono" value="${xl.preciou}"></td>
+						#foreach($xxl in $xxlista)
+					<td><input type="number" class="form-control" name="pedidos[]" size="4"
+						onkeypress="return filtroEntrada(event)" onkeyup="m($icono);"
+						id="pedido$icono" onblur="sumando(${xxl.count})" value="0"></td>
+						#end
+						
+					<td><input type="text" class="form-control" size="4"
+						disabled="disabled" id="subtotal$icono" value="0"></td>
+					
+					#set($icono=$icono+1)
+	
+				</tr>
+				#end
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="6" style="text-align: right">MONTO TOTAL DEL PEDIDO (BS):</th>
+				<th colspan="2"><input type="text" class="form-control" size="8"
+					disabled="disabled" id="total"></th>
+			</tr>
+		</tfoot>
+
+
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example3').DataTable();		
+	});
+</script>
+

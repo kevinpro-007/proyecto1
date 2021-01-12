@@ -1,0 +1,61 @@
+<form id="idcuerpomodal4">
+	<div class="container-fluid">
+		<div class="form-group row">
+#foreach($xl in $xlista)
+			<div class="col">
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">ID PRODUCTO</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="mod4codigop" value="${xl.id_producto}" disabled="disabled">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">CATEGORIA</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control"  value="${xl.categoria}" disabled="disabled">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">NOMBRE</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" value="${xl.nombre}" disabled="disabled">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">TAMAÑO</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control"  value="${xl.tamano}" disabled="disabled">
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="col">				
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">CANTIDAD</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="mod4cantidad" value="${xl.cantidad}" onkeypress="return filtroEntrada(event)" >
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">PRECIO UNITARIO</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="mod4preciounitario" value="${xl.preciou}" onkeypress="return filtroEntrada(event)" >
+					</div>
+				</div>
+			</div>
+#end
+
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+
+</form>

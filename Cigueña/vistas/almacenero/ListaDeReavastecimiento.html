@@ -1,0 +1,78 @@
+
+
+<div class="table-responsive" id="idcuerpo">
+	<table id="example" class="table table-striped table-bordered"
+		style="width: 100%">
+
+		<thead>
+			<tr>
+				<th COLSPAN=6>
+					<h2>
+						<a href="Menu.html"><span
+							class="glyphicon glyphicon-arrow-left"> </span></a> LISTA DE
+						PRODUCTOS CON BAJAS CANTIDADES
+					</h2>
+				</th>
+				<th COLSPAN=2>
+					<button type="button" class="btn btn-danger" data-toggle="modal"
+						data-target="#myModal3">
+						<span class="glyphicon glyphicon-new-window"
+							onclick='VerListaModal();'> VER LISTA</span>
+					</button>
+				</th>
+			</tr>
+			<tr>
+				<th>CODIGO PRODUCTO</th>
+				<th>CATEGORIA</th>
+				<th>NOMBRE</th>
+				<th>TAMAÑO</th>
+				<th>CANTIDAD</th>
+				<th>PRECIO UNITARIO</th>
+				<th>MODIFICAR</th>
+				<th>AGREGAR</th>
+			</tr>
+		</thead>
+		<tbody>
+			#foreach($xl in $xlista)
+			<tr>
+				<td>${xl.id_producto}</td>
+				
+				<td>${xl.categoria}</td>
+				<td>${xl.nombre}</td>
+				<td>${xl.tamano}</td>
+				<td>${xl.cantidad}</td>
+				<td>${xl.preciou}</td>
+				<td>
+					<button type="button" class="btn btn-success" data-toggle="modal"
+						data-target="#myModal4">
+						<span class="glyphicon glyphicon-new-window"
+							onclick='modificarC("${xl.id_producto}");'>Modificar</span>
+					</button> 
+				</td>
+				<td>#if(${xl.estado}==1)
+					<button type="button" class="btn btn-success">
+						<span class="glyphicon glyphicon-new-window"
+							onclick='Agregarlista("${xl.id_producto}");'>Agregar</span>
+					</button> 
+					#else
+					<button type="button" class="btn btn-danger">
+						<span class="glyphicon glyphicon-new-window"
+							onclick="xAgregarlista(${xl.id_producto});">agregado</span>
+					</button> 
+					#end
+
+				</td>
+			</tr>
+			#end
+		</tbody>
+
+
+
+	</table>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});
+</script>
+
